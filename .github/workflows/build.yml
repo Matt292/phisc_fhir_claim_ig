@@ -1,0 +1,67 @@
+name: Build FHIR IG
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: npm ci
+      - run: npx sushi .
+      - name: Cache publisher
+        uses: actions/cache@v4
+        with:
+          path: input-cache/publisher.jar
+          key: fhir-publisher-current
+      - name: Download publisher
+        shell: bash
+        run: |
+          mkdir -p input-cache
+          if [ ! -f input-cache/publisher.jar ]; then
+            curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o input-cache/publisher.jar
+          fi
+      - run: java -Xmx4g -jar input-cache/publisher.jar -ig ig.ini
+      - name: Fail on publisher errors
+        shell: bash
+        run: |
+          test -f output/qa.html
+          if grep -Eqi '([1-9][0-9]*) errors' output/qa.html; then exit 1; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phisc-fhir-ig-site
+          path: output
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        with:
+          path: output
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

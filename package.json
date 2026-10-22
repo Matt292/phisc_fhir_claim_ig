@@ -1,8 +1,1 @@
-{
-  "name": "phisc-fhir-claim-ig",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "sushi .",
-    "if": "java -jar publisher.jar"
-  }
-}
+{"name":"phisc-fhir-claims-ig","private":true,"version":"0.1.0","scripts":{"sushi":"sushi .","build":"npm run sushi && java -jar input-cache/publisher.jar -ig ig.ini","lint":"sushi . --log-level error"},"devDependencies":{"fsh-sushi":"^3.16.0"}}

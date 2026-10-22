@@ -1,22 +1,46 @@
-id: phisc.fhir.za.claims
-canonical: http://example.org/fhir/phisc
-name: PHISCFHIRCLAIMIG
-title: "FHIR Implementation Guide for PHISC standardised claim submission"
-description: "FHIR IG for PHISC claims"
+id: za.org.phisc.fhir.claims
+canonical: https://phisc.org.za/fhir/claims
+name: PHISCClaimsIG
+title: PHISC FHIR Claims Implementation Guide
 status: draft
-version: 1.0.0
+version: 0.1.0
 fhirVersion: 4.0.1
 copyrightYear: 2026+
-releaseLabel: draft
-
+releaseLabel: ci-build
 publisher:
-  name: "Private Healthcare Information Standards Committee (PHISC)"
-  url: "http://www.phisc.net"
-
+  name: PHISC
+  url: https://phisc.org.za
+jurisdiction: urn:iso:std:iso:3166#ZA "South Africa"
 dependencies:
-  hl7.fhir.r4.core: 4.0.1
-
+  hl7.fhir.uv.extensions.r4: 5.2.0
+parameters:
+  show-inherited-invariants: false
+  usage-stats-opt-out: true
+pages:
+  index.md:
+    title: Home
+  architecture.md:
+    title: Architecture
+  profiles.md:
+    title: Profiles
+  mapping.md:
+    title: PHISC Mapping
+  transactions.md:
+    title: Transactions
+  terminology.md:
+    title: Terminology
+  conformance.md:
+    title: Conformance
+  downloads.md:
+    title: Downloads
 menu:
   Home: index.html
-  Use Cases: use-cases.html
-  Mapping: mapping.html
+  Design:
+    Architecture: architecture.html
+    Transactions: transactions.html
+    Mapping: mapping.html
+  Conformance:
+    Profiles: profiles.html
+    Terminology: terminology.html
+    Requirements: conformance.html
+  Downloads: downloads.html
