@@ -1,0 +1,22 @@
+id: phisc.fhir.za.claims
+canonical: http://example.org/fhir/phisc
+name: PHISCFHIRCLAIMIG
+title: "FHIR Implementation Guide for PHISC standardised claim submission"
+description: "FHIR IG for PHISC claims"
+status: draft
+version: 1.0.0
+fhirVersion: 4.0.1
+copyrightYear: 2026+
+releaseLabel: draft
+
+publisher:
+  name: "Private Healthcare Information Standards Committee (PHISC)"
+  url: "http://www.phisc.net"
+
+dependencies:
+  hl7.fhir.r4.core: 4.0.1
+
+menu:
+  Home: index.html
+  Use Cases: use-cases.html
+  Mapping: mapping.html

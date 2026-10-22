@@ -1,0 +1,8 @@
+{
+  "name": "phisc-fhir-claim-ig",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "sushi .",
+    "if": "java -jar publisher.jar"
+  }
+}
