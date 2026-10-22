@@ -58,7 +58,7 @@ Title: "Example PHISC Professional Claim"
 Description: "Example provider claim submitted to a medical scheme."
 
 // Claim identifier
-* identifier[0].system = "https://example.org/claims"
+* identifier[0].system = "urn:phisc:claim-id"
 * identifier[0].value = "CLAIM-001"
 
 // Claim classification
