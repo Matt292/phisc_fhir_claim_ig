@@ -10,7 +10,7 @@ Title: "PHISC Transaction Type"
 * #PHISC07 "Response Message"
 ValueSet: PHISCTransactionTypeVS
 Id: phisc-transaction-type
-* include codes from system PHISCTransactionTypeC
+* include codes from system PHISCTransactionTypeCS
 
 CodeSystem: PHISCItemTypeCS
 Id: phisc-item-type

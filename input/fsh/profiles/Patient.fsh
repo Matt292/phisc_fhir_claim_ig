@@ -9,7 +9,3 @@ Id: phisc-patient
 * identifier ^short = "National ID or Passport"
 
 * extension contains PHISCDependentCode named dependentCode 0..1
-
-Extension: PHISCDependentCode
-Id: phisc-dependent-code
-* value[x] only string
