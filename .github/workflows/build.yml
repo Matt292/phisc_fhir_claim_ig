@@ -32,7 +32,7 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: false
       - name: Install Jekyll
-          run: gem install jekyll bundler
+        run: gem install jekyll bundler
       - name: Cache publisher
         uses: actions/cache@v4
         with:
