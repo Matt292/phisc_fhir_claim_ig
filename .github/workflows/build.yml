@@ -45,7 +45,7 @@ jobs:
           if [ ! -f input-cache/publisher.jar ]; then
             curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o input-cache/publisher.jar
           fi
-      - run: java -Xmx4g -jar input-cache/publisher.jar -ig ig.ini
+      - run: java -Xmx4g -jar input-cache/publisher.jar -ig ig.ini -no-sushi
       - name: Fail on publisher errors
         shell: bash
         run: |
